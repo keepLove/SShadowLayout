@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.s.android.shadowlayout.SShadowFrameLayout
+        android:id="@+id/shadowLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:padding="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:ssl_background="#FFF"
+        app:ssl_radius="10dp"
+        app:ssl_shadowAlpha="0.5"
+        app:ssl_shadowColor="#F19EC2"
+        app:ssl_shadowElevation="5dp"
+        app:ssl_shadowType="padding">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Hello World!" />
+
+    </com.s.android.shadowlayout.SShadowFrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
