@@ -12,10 +12,6 @@
     <attr name="ssl_background" format="reference|color" />
 
     <declare-styleable name="SShadowLayout">
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
         <attr name="ssl_radius" />
         <attr name="ssl_shadowElevation" />
         <attr name="ssl_shadowAlpha" />
@@ -25,10 +21,6 @@
     </declare-styleable>
 
     <declare-styleable name="SShadowLinearLayout">
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
         <attr name="ssl_radius" />
         <attr name="ssl_shadowElevation" />
         <attr name="ssl_shadowAlpha" />
@@ -38,10 +30,6 @@
     </declare-styleable>
 
     <declare-styleable name="SShadowRelativeLayout">
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
         <attr name="ssl_radius" />
         <attr name="ssl_shadowElevation" />
         <attr name="ssl_shadowAlpha" />
@@ -51,10 +39,6 @@
     </declare-styleable>
 
     <declare-styleable name="SShadowConstraintLayout">
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
         <attr name="ssl_radius" />
         <attr name="ssl_shadowElevation" />
         <attr name="ssl_shadowAlpha" />
@@ -64,10 +48,6 @@
     </declare-styleable>
 
     <declare-styleable name="SShadowFrameLayout">
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
         <attr name="ssl_radius" />
         <attr name="ssl_shadowElevation" />
         <attr name="ssl_shadowAlpha" />

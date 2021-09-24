@@ -3,16 +3,6 @@ package com.s.android.shadowlayout;
 public interface ILayout {
 
     /**
-     * limit the width of a layout
-     */
-    boolean setWidthLimit(int widthLimit);
-
-    /**
-     * limit the height of a layout
-     */
-    boolean setHeightLimit(int heightLimit);
-
-    /**
      * See {@link android.view.View#setElevation(float)}
      */
     void setShadowElevation(int elevation);
@@ -38,10 +28,5 @@ public interface ILayout {
      * get the layout radius
      */
     int getRadius();
-
-    /**
-     * this method will determine the radius and shadow.
-     */
-    void setRadiusAndShadow(int radius, int shadowElevation, float shadowAlpha);
 
 }

@@ -30,23 +30,6 @@ public class SShadowConstraintLayout extends ConstraintLayout implements ILayout
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        widthMeasureSpec = mLayoutHelper.getMeasuredWidthSpec(widthMeasureSpec);
-        heightMeasureSpec = mLayoutHelper.getMeasuredHeightSpec(heightMeasureSpec);
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int minW = mLayoutHelper.handleMiniWidth(widthMeasureSpec, getMeasuredWidth());
-        int minH = mLayoutHelper.handleMiniHeight(heightMeasureSpec, getMeasuredHeight());
-        if (widthMeasureSpec != minW || heightMeasureSpec != minH) {
-            super.onMeasure(minW, minH);
-        }
-    }
-
-    @Override
-    public void setRadiusAndShadow(int topRadius, int shadowElevation, float shadowAlpha) {
-        mLayoutHelper.setRadiusAndShadow(topRadius, shadowElevation, shadowAlpha);
-    }
-
-    @Override
     public void setRadius(int radius) {
         mLayoutHelper.setRadius(radius);
     }
@@ -54,24 +37,6 @@ public class SShadowConstraintLayout extends ConstraintLayout implements ILayout
     @Override
     public int getRadius() {
         return mLayoutHelper.getRadius();
-    }
-
-    @Override
-    public boolean setWidthLimit(int widthLimit) {
-        if (mLayoutHelper.setWidthLimit(widthLimit)) {
-            requestLayout();
-            invalidate();
-        }
-        return true;
-    }
-
-    @Override
-    public boolean setHeightLimit(int heightLimit) {
-        if (mLayoutHelper.setHeightLimit(heightLimit)) {
-            requestLayout();
-            invalidate();
-        }
-        return true;
     }
 
     @Override
@@ -95,9 +60,9 @@ public class SShadowConstraintLayout extends ConstraintLayout implements ILayout
     }
 
     @Override
-    public void draw(Canvas canvas) {
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
         mLayoutHelper.drawShadow(canvas);
-        super.draw(canvas);
     }
 
 }
