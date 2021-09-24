@@ -1,9 +1,12 @@
 package com.s.android.shadowlayout;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.s.android.shadowlayout.helper.ShadowLayoutHelper;
@@ -12,21 +15,27 @@ public class SShadowConstraintLayout extends ConstraintLayout implements ILayout
 
     private ShadowLayoutHelper mLayoutHelper;
 
-    public SShadowConstraintLayout(Context context) {
+    public SShadowConstraintLayout(@NonNull Context context) {
         this(context, null);
     }
 
-    public SShadowConstraintLayout(Context context, AttributeSet attrs) {
+    public SShadowConstraintLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SShadowConstraintLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SShadowConstraintLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs, defStyleAttr);
+        this.init(context, attrs, defStyleAttr, 0);
     }
 
-    private void init(Context context, AttributeSet attrs, int defStyleAttr) {
-        mLayoutHelper = ShadowLayoutHelper.getHelper(context, attrs, defStyleAttr, this);
+    @TargetApi(21)
+    public SShadowConstraintLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        this.init(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    private void init(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        mLayoutHelper = ShadowLayoutHelper.getHelper(context, attrs, defStyleAttr, defStyleRes, this);
     }
 
     @Override

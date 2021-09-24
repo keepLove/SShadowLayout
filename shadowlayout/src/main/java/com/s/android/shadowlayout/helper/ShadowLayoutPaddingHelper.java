@@ -10,6 +10,9 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.s.android.shadowlayout.ILayout;
 
 
@@ -23,8 +26,8 @@ class ShadowLayoutPaddingHelper extends ShadowLayoutHelper implements ILayout {
     private final Rect backgroundRect;
     private final Path shadowPath;
 
-    ShadowLayoutPaddingHelper(Context context, AttributeSet attrs, int defAttr, View owner) {
-        super(context, attrs, defAttr, owner);
+    ShadowLayoutPaddingHelper(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+        super(context, attrs, defStyleAttr, defStyleRes, owner);
         owner.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         owner.setWillNotDraw(false);
 
@@ -37,7 +40,7 @@ class ShadowLayoutPaddingHelper extends ShadowLayoutHelper implements ILayout {
 
     @Override
     public void invalidate() {
-        View owner = mOwner.get();
+        View owner = getOwnerView();
         if (owner == null) {
             return;
         }
@@ -46,7 +49,7 @@ class ShadowLayoutPaddingHelper extends ShadowLayoutHelper implements ILayout {
 
     @Override
     public void drawShadow(Canvas canvas) {
-        View owner = mOwner.get();
+        View owner = getOwnerView();
         if (owner == null) {
             return;
         }

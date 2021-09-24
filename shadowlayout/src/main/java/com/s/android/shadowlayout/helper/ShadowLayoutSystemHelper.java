@@ -8,6 +8,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.s.android.shadowlayout.ILayout;
 
 /**
@@ -16,8 +19,8 @@ import com.s.android.shadowlayout.ILayout;
 @TargetApi(21)
 class ShadowLayoutSystemHelper extends ShadowLayoutHelper implements ILayout {
 
-    ShadowLayoutSystemHelper(Context context, AttributeSet attrs, int defAttr, View owner) {
-        super(context, attrs, defAttr, owner);
+    ShadowLayoutSystemHelper(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+        super(context, attrs, defStyleAttr, defStyleRes, owner);
         owner.setOutlineProvider(new ViewOutlineProvider() {
 
             @Override
@@ -39,7 +42,7 @@ class ShadowLayoutSystemHelper extends ShadowLayoutHelper implements ILayout {
 
     @Override
     public void invalidate() {
-        View owner = mOwner.get();
+        View owner = getOwnerView();
         if (owner == null) {
             return;
         }

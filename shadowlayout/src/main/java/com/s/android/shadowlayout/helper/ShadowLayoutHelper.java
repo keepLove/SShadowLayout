@@ -9,6 +9,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.s.android.shadowlayout.ILayout;
@@ -25,17 +26,17 @@ public abstract class ShadowLayoutHelper implements ILayout {
     private static final int SHADOW_TYPE_SYSTEM = 0;
     private static final int SHADOW_TYPE_PADDING = 1;
 
-    public static ShadowLayoutHelper getHelper(Context context, @Nullable AttributeSet attrs, int defAttr, View owner) {
-        if (!useFeature() || attrs == null) {
-            return new ShadowLayoutPaddingHelper(context, attrs, defAttr, owner);
+    public static ShadowLayoutHelper getHelper(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+        if (!useFeature()) {
+            return new ShadowLayoutPaddingHelper(context, attrs, defStyleAttr, defStyleRes, owner);
         }
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SShadowLayout, defAttr, 0);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SShadowLayout, defStyleAttr, defStyleRes);
         int type = typedArray.getInt(R.styleable.SShadowLayout_ssl_shadowType, SHADOW_TYPE_SYSTEM);
         typedArray.recycle();
         if (type == SHADOW_TYPE_PADDING) {
-            return new ShadowLayoutPaddingHelper(context, attrs, defAttr, owner);
+            return new ShadowLayoutPaddingHelper(context, attrs, defStyleAttr, defStyleRes, owner);
         }
-        return new ShadowLayoutSystemHelper(context, attrs, defAttr, owner);
+        return new ShadowLayoutSystemHelper(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @SuppressLint({"AnnotateVersionCheck", "ObsoleteSdkInt"})
@@ -43,26 +44,39 @@ public abstract class ShadowLayoutHelper implements ILayout {
         return Build.VERSION.SDK_INT >= 21;
     }
 
-    protected final WeakReference<View> mOwner;
+    private final WeakReference<View> mOwner;
 
+    /**
+     * 阴影偏移量
+     */
     protected int mShadowElevation = 0;
+    /**
+     * 阴影透明度
+     */
     protected float mShadowAlpha = 0f;
+    /**
+     * 圆角半径
+     */
     protected int mRadius;
+    /**
+     * 阴影颜色
+     */
     protected int mShadowColor = 0;
+    /**
+     * 内容区域背景
+     */
     @Nullable
-    protected Drawable mShadowBackground = null;
+    protected Drawable mShadowBackground;
 
-    protected ShadowLayoutHelper(Context context, @Nullable AttributeSet attrs, int defAttr, View owner) {
+    protected ShadowLayoutHelper(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
         mOwner = new WeakReference<>(owner);
-        if (null != attrs || defAttr != 0) {
-            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SShadowLayout, defAttr, 0);
-            mRadius = typedArray.getDimensionPixelSize(R.styleable.SShadowLayout_ssl_radius, 0);
-            mShadowElevation = typedArray.getDimensionPixelSize(R.styleable.SShadowLayout_ssl_shadowElevation, mShadowElevation);
-            mShadowAlpha = typedArray.getFloat(R.styleable.SShadowLayout_ssl_shadowAlpha, mShadowAlpha);
-            mShadowColor = typedArray.getColor(R.styleable.SShadowLayout_ssl_shadowColor, mShadowColor);
-            mShadowBackground = typedArray.getDrawable(R.styleable.SShadowLayout_ssl_background);
-            typedArray.recycle();
-        }
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SShadowLayout, defStyleAttr, defStyleRes);
+        mRadius = typedArray.getDimensionPixelSize(R.styleable.SShadowLayout_ssl_radius, 0);
+        mShadowElevation = typedArray.getDimensionPixelSize(R.styleable.SShadowLayout_ssl_shadowElevation, mShadowElevation);
+        mShadowAlpha = typedArray.getFloat(R.styleable.SShadowLayout_ssl_shadowAlpha, mShadowAlpha);
+        mShadowColor = typedArray.getColor(R.styleable.SShadowLayout_ssl_shadowColor, mShadowColor);
+        mShadowBackground = typedArray.getDrawable(R.styleable.SShadowLayout_ssl_background);
+        typedArray.recycle();
         invalidate();
     }
 
@@ -106,6 +120,11 @@ public abstract class ShadowLayoutHelper implements ILayout {
     @Override
     public int getRadius() {
         return mRadius;
+    }
+
+    @Nullable
+    protected View getOwnerView() {
+        return mOwner.get();
     }
 
     public abstract void invalidate();

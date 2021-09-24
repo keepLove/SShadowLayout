@@ -1,9 +1,13 @@
 package com.s.android.shadowlayout;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.s.android.shadowlayout.helper.ShadowLayoutHelper;
 
@@ -11,21 +15,27 @@ public class SShadowRelativeLayout extends RelativeLayout implements ILayout {
 
     private ShadowLayoutHelper mLayoutHelper;
 
-    public SShadowRelativeLayout(Context context) {
+    public SShadowRelativeLayout(@NonNull Context context) {
         this(context, null);
     }
 
-    public SShadowRelativeLayout(Context context, AttributeSet attrs) {
+    public SShadowRelativeLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SShadowRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SShadowRelativeLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs, defStyleAttr);
+        this.init(context, attrs, defStyleAttr, 0);
     }
 
-    private void init(Context context, AttributeSet attrs, int defStyleAttr) {
-        mLayoutHelper = ShadowLayoutHelper.getHelper(context, attrs, defStyleAttr, this);
+    @TargetApi(21)
+    public SShadowRelativeLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        this.init(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    private void init(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        mLayoutHelper = ShadowLayoutHelper.getHelper(context, attrs, defStyleAttr, defStyleRes, this);
     }
 
     @Override
