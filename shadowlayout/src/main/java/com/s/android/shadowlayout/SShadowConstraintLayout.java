@@ -3,8 +3,10 @@ package com.s.android.shadowlayout;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -39,13 +41,9 @@ public class SShadowConstraintLayout extends ConstraintLayout implements ILayout
     }
 
     @Override
-    public void setRadius(int radius) {
-        mLayoutHelper.setRadius(radius);
-    }
-
-    @Override
-    public int getRadius() {
-        return mLayoutHelper.getRadius();
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        mLayoutHelper.drawShadow(canvas);
     }
 
     @Override
@@ -69,9 +67,43 @@ public class SShadowConstraintLayout extends ConstraintLayout implements ILayout
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        mLayoutHelper.drawShadow(canvas);
+    public void setShadowRadius(int radius) {
+        mLayoutHelper.setShadowRadius(radius);
+    }
+
+    @Override
+    public int getShadowRadius() {
+        return mLayoutHelper.getShadowRadius();
+    }
+
+    @Override
+    public void setShadowRadius(int topLeft, int topRight, int bottomLeft, int bottomRight) {
+        mLayoutHelper.setShadowRadius(topLeft, topRight, bottomLeft, bottomRight);
+    }
+
+    @Override
+    public void setShadowBackground(Drawable drawable) {
+        mLayoutHelper.setShadowBackground(drawable);
+    }
+
+    @Override
+    public void setShadowBackground(@ColorInt int color) {
+        mLayoutHelper.setShadowBackground(color);
+    }
+
+    @Override
+    public void addShadowFlag(int flag) {
+        mLayoutHelper.addShadowFlag(flag);
+    }
+
+    @Override
+    public void setShadowFlags(int flag) {
+        mLayoutHelper.setShadowFlags(flag);
+    }
+
+    @Override
+    public int getShadowFlags() {
+        return mLayoutHelper.getShadowFlags();
     }
 
 }

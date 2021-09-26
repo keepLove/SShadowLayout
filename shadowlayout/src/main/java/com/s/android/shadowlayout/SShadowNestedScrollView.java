@@ -1,39 +1,32 @@
 package com.s.android.shadowlayout;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 
 import com.s.android.shadowlayout.helper.ShadowLayoutHelper;
 
-public class SShadowRelativeLayout extends RelativeLayout implements ILayout {
+public class SShadowNestedScrollView extends NestedScrollView implements ILayout {
 
     private ShadowLayoutHelper mLayoutHelper;
 
-    public SShadowRelativeLayout(@NonNull Context context) {
+    public SShadowNestedScrollView(@NonNull Context context) {
         this(context, null);
     }
 
-    public SShadowRelativeLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public SShadowNestedScrollView(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SShadowRelativeLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SShadowNestedScrollView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.init(context, attrs, defStyleAttr, 0);
-    }
-
-    @TargetApi(21)
-    public SShadowRelativeLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        this.init(context, attrs, defStyleAttr, defStyleRes);
     }
 
     private void init(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {

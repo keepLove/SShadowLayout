@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -168,7 +170,7 @@ public abstract class ShadowLayoutHelper implements ILayout {
     }
 
     @Override
-    public void setRadius(int radius) {
+    public void setShadowRadius(int radius) {
         if (mRadius == radius) {
             return;
         }
@@ -177,8 +179,46 @@ public abstract class ShadowLayoutHelper implements ILayout {
     }
 
     @Override
-    public int getRadius() {
+    public int getShadowRadius() {
         return mRadius;
+    }
+
+    @Override
+    public void setShadowRadius(int topLeft, int topRight, int bottomLeft, int bottomRight) {
+        mRadiusTopLeft = topLeft;
+        mRadiusTopRight = topRight;
+        mRadiusBottomLeft = bottomLeft;
+        mRadiusBottomRight = bottomRight;
+        invalidate();
+    }
+
+    @Override
+    public void setShadowBackground(Drawable drawable) {
+        mShadowBackground = drawable;
+        invalidate();
+    }
+
+    @Override
+    public void setShadowBackground(@ColorInt int color) {
+        mShadowBackground = new ColorDrawable(color);
+        invalidate();
+    }
+
+    @Override
+    public void addShadowFlag(int flag) {
+        flags |= flag;
+        invalidate();
+    }
+
+    @Override
+    public void setShadowFlags(int flags) {
+        this.flags = flags;
+        invalidate();
+    }
+
+    @Override
+    public int getShadowFlags() {
+        return flags;
     }
 
     @Nullable

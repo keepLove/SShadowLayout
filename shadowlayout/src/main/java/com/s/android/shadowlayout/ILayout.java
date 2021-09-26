@@ -1,5 +1,9 @@
 package com.s.android.shadowlayout;
 
+import android.graphics.drawable.Drawable;
+
+import androidx.annotation.ColorInt;
+
 public interface ILayout {
 
     /**
@@ -22,11 +26,26 @@ public interface ILayout {
     /**
      * set the layout radius
      */
-    void setRadius(int radius);
+    void setShadowRadius(int radius);
 
     /**
      * get the layout radius
      */
-    int getRadius();
+    int getShadowRadius();
+
+    /**
+     * set the layout radius
+     */
+    void setShadowRadius(int topLeft, int topRight, int bottomLeft, int bottomRight);
+
+    void setShadowBackground(Drawable drawable);
+
+    void setShadowBackground(@ColorInt int color);
+
+    void addShadowFlag(int flag);
+
+    void setShadowFlags(int flag);
+
+    int getShadowFlags();
 
 }

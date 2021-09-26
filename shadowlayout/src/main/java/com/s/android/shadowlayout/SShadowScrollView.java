@@ -5,7 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
@@ -13,25 +13,25 @@ import androidx.annotation.Nullable;
 
 import com.s.android.shadowlayout.helper.ShadowLayoutHelper;
 
-public class SShadowRelativeLayout extends RelativeLayout implements ILayout {
+public class SShadowScrollView extends ScrollView implements ILayout {
 
     private ShadowLayoutHelper mLayoutHelper;
 
-    public SShadowRelativeLayout(@NonNull Context context) {
+    public SShadowScrollView(@NonNull Context context) {
         this(context, null);
     }
 
-    public SShadowRelativeLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public SShadowScrollView(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SShadowRelativeLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SShadowScrollView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.init(context, attrs, defStyleAttr, 0);
     }
 
     @TargetApi(21)
-    public SShadowRelativeLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public SShadowScrollView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         this.init(context, attrs, defStyleAttr, defStyleRes);
     }
