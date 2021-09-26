@@ -17,6 +17,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:ssl_background="#FFF"
         app:ssl_radius="10dp"
+        app:ssl_radius_bottomLeft="30dp"
+        app:ssl_radius_topRight="30dp"
         app:ssl_shadowAlpha="0.5"
         app:ssl_shadowColor="#F19EC2"
         app:ssl_shadowElevation="5dp"

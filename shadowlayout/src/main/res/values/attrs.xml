@@ -2,6 +2,10 @@
 <resources>
 
     <attr name="ssl_radius" format="dimension" />
+    <attr name="ssl_radius_topLeft" format="dimension" />
+    <attr name="ssl_radius_topRight" format="dimension" />
+    <attr name="ssl_radius_bottomLeft" format="dimension" />
+    <attr name="ssl_radius_bottomRight" format="dimension" />
     <attr name="ssl_shadowAlpha" format="float" />
     <attr name="ssl_shadowElevation" format="dimension" />
     <attr name="ssl_shadowType" format="enum">
@@ -10,49 +14,81 @@
     </attr>
     <attr name="ssl_shadowColor" format="color" />
     <attr name="ssl_background" format="reference|color" />
+    <attr name="ssl_showDirection" format="flags">
+        <flag name="no" value="0x00000000" />
+        <flag name="left" value="0x00000001" />
+        <flag name="top" value="0x00000010" />
+        <flag name="right" value="0x00000100" />
+        <flag name="bottom" value="0x00001000" />
+    </attr>
 
     <declare-styleable name="SShadowLayout">
         <attr name="ssl_radius" />
+        <attr name="ssl_radius_topLeft" />
+        <attr name="ssl_radius_topRight" />
+        <attr name="ssl_radius_bottomLeft" />
+        <attr name="ssl_radius_bottomRight" />
         <attr name="ssl_shadowElevation" />
         <attr name="ssl_shadowAlpha" />
         <attr name="ssl_shadowType" />
         <attr name="ssl_shadowColor" />
         <attr name="ssl_background" />
+        <attr name="ssl_showDirection" />
     </declare-styleable>
 
     <declare-styleable name="SShadowLinearLayout">
         <attr name="ssl_radius" />
+        <attr name="ssl_radius_topLeft" />
+        <attr name="ssl_radius_topRight" />
+        <attr name="ssl_radius_bottomLeft" />
+        <attr name="ssl_radius_bottomRight" />
         <attr name="ssl_shadowElevation" />
         <attr name="ssl_shadowAlpha" />
         <attr name="ssl_shadowType" />
         <attr name="ssl_shadowColor" />
         <attr name="ssl_background" />
+        <attr name="ssl_showDirection" />
     </declare-styleable>
 
     <declare-styleable name="SShadowRelativeLayout">
         <attr name="ssl_radius" />
+        <attr name="ssl_radius_topLeft" />
+        <attr name="ssl_radius_topRight" />
+        <attr name="ssl_radius_bottomLeft" />
+        <attr name="ssl_radius_bottomRight" />
         <attr name="ssl_shadowElevation" />
         <attr name="ssl_shadowAlpha" />
         <attr name="ssl_shadowType" />
         <attr name="ssl_shadowColor" />
         <attr name="ssl_background" />
+        <attr name="ssl_showDirection" />
     </declare-styleable>
 
     <declare-styleable name="SShadowConstraintLayout">
         <attr name="ssl_radius" />
+        <attr name="ssl_radius_topLeft" />
+        <attr name="ssl_radius_topRight" />
+        <attr name="ssl_radius_bottomLeft" />
+        <attr name="ssl_radius_bottomRight" />
         <attr name="ssl_shadowElevation" />
         <attr name="ssl_shadowAlpha" />
         <attr name="ssl_shadowType" />
         <attr name="ssl_shadowColor" />
         <attr name="ssl_background" />
+        <attr name="ssl_showDirection" />
     </declare-styleable>
 
     <declare-styleable name="SShadowFrameLayout">
         <attr name="ssl_radius" />
+        <attr name="ssl_radius_topLeft" />
+        <attr name="ssl_radius_topRight" />
+        <attr name="ssl_radius_bottomLeft" />
+        <attr name="ssl_radius_bottomRight" />
         <attr name="ssl_shadowElevation" />
         <attr name="ssl_shadowAlpha" />
         <attr name="ssl_shadowType" />
         <attr name="ssl_shadowColor" />
         <attr name="ssl_background" />
+        <attr name="ssl_showDirection" />
     </declare-styleable>
 </resources>

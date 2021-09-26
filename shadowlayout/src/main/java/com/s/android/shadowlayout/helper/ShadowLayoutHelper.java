@@ -33,6 +33,31 @@ public abstract class ShadowLayoutHelper implements ILayout {
     private static final int SHADOW_TYPE_PADDING = 1;
 
     /**
+     * 阴影显示
+     */
+    public static final int FLAG_SHOWDIRECTION_MASK = 0x00001111;
+    /**
+     * 阴影显示，不显示
+     */
+    public static final int FLAG_SHOWDIRECTION_NO = 0x00000000;
+    /**
+     * 阴影显示，左边显示
+     */
+    public static final int FLAG_SHOWDIRECTION_LEFT = 0x00000001;
+    /**
+     * 阴影显示，上边显示
+     */
+    public static final int FLAG_SHOWDIRECTION_TOP = 0x00000010;
+    /**
+     * 阴影显示，右边显示
+     */
+    public static final int FLAG_SHOWDIRECTION_RIGHT = 0x00000100;
+    /**
+     * 阴影显示，下边显示
+     */
+    public static final int FLAG_SHOWDIRECTION_BOTTOM = 0x00001000;
+
+    /**
      * 获取实现方式。
      * SDK小于21时，自动使用{@link ShadowLayoutPaddingHelper}
      * 其它根据showType判断
@@ -69,6 +94,10 @@ public abstract class ShadowLayoutHelper implements ILayout {
      * 圆角半径
      */
     protected int mRadius;
+    protected int mRadiusTopLeft;
+    protected int mRadiusTopRight;
+    protected int mRadiusBottomLeft;
+    protected int mRadiusBottomRight;
     /**
      * 阴影颜色
      */
@@ -78,17 +107,36 @@ public abstract class ShadowLayoutHelper implements ILayout {
      */
     @Nullable
     protected Drawable mShadowBackground;
+    /**
+     * 标识位
+     */
+    protected int flags = FLAG_SHOWDIRECTION_LEFT | FLAG_SHOWDIRECTION_TOP | FLAG_SHOWDIRECTION_RIGHT | FLAG_SHOWDIRECTION_BOTTOM;
 
     protected ShadowLayoutHelper(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
         mOwner = new WeakReference<>(owner);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SShadowLayout, defStyleAttr, defStyleRes);
         mRadius = typedArray.getDimensionPixelSize(R.styleable.SShadowLayout_ssl_radius, 0);
+        mRadiusTopLeft = typedArray.getDimensionPixelSize(R.styleable.SShadowLayout_ssl_radius_topLeft, mRadius);
+        mRadiusTopRight = typedArray.getDimensionPixelSize(R.styleable.SShadowLayout_ssl_radius_topRight, mRadius);
+        mRadiusBottomLeft = typedArray.getDimensionPixelSize(R.styleable.SShadowLayout_ssl_radius_bottomLeft, mRadius);
+        mRadiusBottomRight = typedArray.getDimensionPixelSize(R.styleable.SShadowLayout_ssl_radius_bottomRight, mRadius);
         mShadowElevation = typedArray.getDimensionPixelSize(R.styleable.SShadowLayout_ssl_shadowElevation, mShadowElevation);
         mShadowAlpha = typedArray.getFloat(R.styleable.SShadowLayout_ssl_shadowAlpha, mShadowAlpha);
         mShadowColor = typedArray.getColor(R.styleable.SShadowLayout_ssl_shadowColor, mShadowColor);
         mShadowBackground = typedArray.getDrawable(R.styleable.SShadowLayout_ssl_background);
+        flags = typedArray.getInt(R.styleable.SShadowLayout_ssl_showDirection, flags);
         typedArray.recycle();
         invalidate();
+    }
+
+    /**
+     * 是否显示
+     *
+     * @param flag {@link #FLAG_SHOWDIRECTION_LEFT} {@link #FLAG_SHOWDIRECTION_TOP}
+     *             {@link #FLAG_SHOWDIRECTION_RIGHT} {@link #FLAG_SHOWDIRECTION_BOTTOM}
+     */
+    public boolean isShowDirection(int flag) {
+        return (flags & FLAG_SHOWDIRECTION_MASK & flag) != 0;
     }
 
     @Override

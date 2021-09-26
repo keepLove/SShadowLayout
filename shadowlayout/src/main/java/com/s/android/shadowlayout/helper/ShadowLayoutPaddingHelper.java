@@ -53,28 +53,52 @@ class ShadowLayoutPaddingHelper extends ShadowLayoutHelper implements ILayout {
         if (owner == null) {
             return;
         }
-        int shadowColor = mShadowColor;
-        if (Color.alpha(shadowColor) == 255) {
-            if (mShadowAlpha != 1) {
-                shadowColor = Color.argb((int) (mShadowAlpha * 255.0f + 0.5f), Color.red(mShadowColor), Color.green(mShadowColor), Color.blue(mShadowColor));
-            }
-        }
+        int shadowColor = convertShadowColor();
         shadowPaint.setColor(shadowColor);
         shadowPaint.setShadowLayer(mShadowElevation, 0, 0, shadowColor);
-
-        shadowRect.left = backgroundRect.left = mShadowElevation;
-        shadowRect.top = backgroundRect.top = mShadowElevation;
-        shadowRect.right = backgroundRect.right = owner.getWidth() - mShadowElevation;
-        shadowRect.bottom = backgroundRect.bottom = owner.getHeight() - mShadowElevation;
-        shadowPath.reset();
-        shadowPath.addRoundRect(shadowRect, new float[]{
-                mRadius, mRadius,
-                mRadius, mRadius,
-                mRadius, mRadius,
-                mRadius, mRadius
-        }, Path.Direction.CW);
+        // 设置Rect和Path
+        settingRect(owner);
+        settingPath();
+        // 阴影
         canvas.drawPath(shadowPath, shadowPaint);
         // 背景
+        drawBackground(canvas);
+    }
+
+    /**
+     * 设置Rect
+     */
+    private void settingRect(View owner) {
+        int left, top, right, bottom;
+        if (isShowDirection(FLAG_SHOWDIRECTION_NO)) {
+            left = top = right = bottom = 0;
+        } else {
+            left = isShowDirection(FLAG_SHOWDIRECTION_LEFT) ? mShadowElevation : 0;
+            top = isShowDirection(FLAG_SHOWDIRECTION_TOP) ? mShadowElevation : 0;
+            right = isShowDirection(FLAG_SHOWDIRECTION_RIGHT) ? mShadowElevation : 0;
+            bottom = isShowDirection(FLAG_SHOWDIRECTION_BOTTOM) ? mShadowElevation : 0;
+        }
+        shadowRect.left = backgroundRect.left = left;
+        shadowRect.top = backgroundRect.top = top;
+        shadowRect.right = backgroundRect.right = owner.getWidth() - right;
+        shadowRect.bottom = backgroundRect.bottom = owner.getHeight() - bottom;
+    }
+
+    /**
+     * 设置Path
+     */
+    private void settingPath() {
+        shadowPath.reset();
+        shadowPath.addRoundRect(shadowRect, new float[]{
+                mRadiusTopLeft, mRadiusTopLeft, mRadiusTopRight, mRadiusTopRight,
+                mRadiusBottomRight, mRadiusBottomRight, mRadiusBottomLeft, mRadiusBottomLeft
+        }, Path.Direction.CW);
+    }
+
+    /**
+     * 绘制背景
+     */
+    private void drawBackground(Canvas canvas) {
         if (mShadowBackground != null) {
             int count = canvas.save();
             canvas.clipPath(shadowPath);
@@ -82,6 +106,21 @@ class ShadowLayoutPaddingHelper extends ShadowLayoutHelper implements ILayout {
             mShadowBackground.draw(canvas);
             canvas.restoreToCount(count);
         }
+    }
+
+    /**
+     * 获取阴影颜色。
+     * 1，如果阴影颜色有透明度，直接使用。
+     * 2，如果没有透明度，则使用mShadowAlpha透明度
+     */
+    private int convertShadowColor() {
+        int shadowColor = mShadowColor;
+        if (Color.alpha(shadowColor) == 255) {
+            if (mShadowAlpha != 1) {
+                shadowColor = Color.argb((int) (mShadowAlpha * 255.0f + 0.5f), Color.red(mShadowColor), Color.green(mShadowColor), Color.blue(mShadowColor));
+            }
+        }
+        return shadowColor;
     }
 
 }
