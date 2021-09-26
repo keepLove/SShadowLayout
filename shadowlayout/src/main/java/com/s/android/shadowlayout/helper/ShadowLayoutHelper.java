@@ -23,20 +23,31 @@ import java.lang.ref.WeakReference;
  */
 public abstract class ShadowLayoutHelper implements ILayout {
 
-    private static final int SHADOW_TYPE_SYSTEM = 0;
+    /**
+     * Outline实现方式
+     */
+    private static final int SHADOW_TYPE_OUTLINE = 0;
+    /**
+     * padding实现方式
+     */
     private static final int SHADOW_TYPE_PADDING = 1;
 
+    /**
+     * 获取实现方式。
+     * SDK小于21时，自动使用{@link ShadowLayoutPaddingHelper}
+     * 其它根据showType判断
+     */
     public static ShadowLayoutHelper getHelper(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
         if (!useFeature()) {
             return new ShadowLayoutPaddingHelper(context, attrs, defStyleAttr, defStyleRes, owner);
         }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SShadowLayout, defStyleAttr, defStyleRes);
-        int type = typedArray.getInt(R.styleable.SShadowLayout_ssl_shadowType, SHADOW_TYPE_SYSTEM);
+        int type = typedArray.getInt(R.styleable.SShadowLayout_ssl_shadowType, SHADOW_TYPE_OUTLINE);
         typedArray.recycle();
         if (type == SHADOW_TYPE_PADDING) {
             return new ShadowLayoutPaddingHelper(context, attrs, defStyleAttr, defStyleRes, owner);
         }
-        return new ShadowLayoutSystemHelper(context, attrs, defStyleAttr, defStyleRes, owner);
+        return new ShadowLayoutOutlineHelper(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @SuppressLint({"AnnotateVersionCheck", "ObsoleteSdkInt"})

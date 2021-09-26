@@ -17,9 +17,9 @@ import com.s.android.shadowlayout.ILayout;
  * 阴影帮助类
  */
 @TargetApi(21)
-class ShadowLayoutSystemHelper extends ShadowLayoutHelper implements ILayout {
+class ShadowLayoutOutlineHelper extends ShadowLayoutHelper implements ILayout {
 
-    ShadowLayoutSystemHelper(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+    ShadowLayoutOutlineHelper(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
         super(context, attrs, defStyleAttr, defStyleRes, owner);
         owner.setOutlineProvider(new ViewOutlineProvider() {
 

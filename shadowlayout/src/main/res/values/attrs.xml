@@ -5,7 +5,7 @@
     <attr name="ssl_shadowAlpha" format="float" />
     <attr name="ssl_shadowElevation" format="dimension" />
     <attr name="ssl_shadowType" format="enum">
-        <enum name="system" value="0" />
+        <enum name="outline" value="0" />
         <enum name="padding" value="1" />
     </attr>
     <attr name="ssl_shadowColor" format="color" />
