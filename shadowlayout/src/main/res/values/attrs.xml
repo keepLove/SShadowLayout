@@ -98,4 +98,35 @@
         <attr name="ssl_background" />
         <attr name="ssl_showDirection" />
     </declare-styleable>
+
+    <declare-styleable name="SShadowScrollView">
+        <attr name="android:padding" />
+        <attr name="ssl_radius" />
+        <attr name="ssl_radius_topLeft" />
+        <attr name="ssl_radius_topRight" />
+        <attr name="ssl_radius_bottomLeft" />
+        <attr name="ssl_radius_bottomRight" />
+        <attr name="ssl_shadowElevation" />
+        <attr name="ssl_shadowAlpha" />
+        <attr name="ssl_shadowType" />
+        <attr name="ssl_shadowColor" />
+        <attr name="ssl_background" />
+        <attr name="ssl_showDirection" />
+    </declare-styleable>
+
+    <declare-styleable name="SShadowNestedScrollView">
+        <attr name="android:padding" />
+        <attr name="ssl_radius" />
+        <attr name="ssl_radius_topLeft" />
+        <attr name="ssl_radius_topRight" />
+        <attr name="ssl_radius_bottomLeft" />
+        <attr name="ssl_radius_bottomRight" />
+        <attr name="ssl_shadowElevation" />
+        <attr name="ssl_shadowAlpha" />
+        <attr name="ssl_shadowType" />
+        <attr name="ssl_shadowColor" />
+        <attr name="ssl_background" />
+        <attr name="ssl_showDirection" />
+    </declare-styleable>
+
 </resources>
