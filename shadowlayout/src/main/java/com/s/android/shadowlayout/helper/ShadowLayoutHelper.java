@@ -91,7 +91,7 @@ public abstract class ShadowLayoutHelper implements ILayout {
     /**
      * 阴影透明度
      */
-    protected float mShadowAlpha = 0f;
+    protected float mShadowAlpha = 1f;
     /**
      * 圆角半径
      */

@@ -26,6 +26,12 @@
 
     <declare-styleable name="SShadowLayout">
         <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingStart" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingEnd" />
+        <attr name="android:paddingBottom" />
         <attr name="ssl_radius" />
         <attr name="ssl_radius_topLeft" />
         <attr name="ssl_radius_topRight" />
@@ -41,6 +47,12 @@
 
     <declare-styleable name="SShadowLinearLayout">
         <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingStart" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingEnd" />
+        <attr name="android:paddingBottom" />
         <attr name="ssl_radius" />
         <attr name="ssl_radius_topLeft" />
         <attr name="ssl_radius_topRight" />
@@ -56,6 +68,12 @@
 
     <declare-styleable name="SShadowRelativeLayout">
         <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingStart" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingEnd" />
+        <attr name="android:paddingBottom" />
         <attr name="ssl_radius" />
         <attr name="ssl_radius_topLeft" />
         <attr name="ssl_radius_topRight" />
@@ -71,6 +89,12 @@
 
     <declare-styleable name="SShadowConstraintLayout">
         <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingStart" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingEnd" />
+        <attr name="android:paddingBottom" />
         <attr name="ssl_radius" />
         <attr name="ssl_radius_topLeft" />
         <attr name="ssl_radius_topRight" />
@@ -86,6 +110,12 @@
 
     <declare-styleable name="SShadowFrameLayout">
         <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingStart" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingEnd" />
+        <attr name="android:paddingBottom" />
         <attr name="ssl_radius" />
         <attr name="ssl_radius_topLeft" />
         <attr name="ssl_radius_topRight" />
@@ -101,6 +131,12 @@
 
     <declare-styleable name="SShadowScrollView">
         <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingStart" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingEnd" />
+        <attr name="android:paddingBottom" />
         <attr name="ssl_radius" />
         <attr name="ssl_radius_topLeft" />
         <attr name="ssl_radius_topRight" />
@@ -116,6 +152,12 @@
 
     <declare-styleable name="SShadowNestedScrollView">
         <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingStart" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingEnd" />
+        <attr name="android:paddingBottom" />
         <attr name="ssl_radius" />
         <attr name="ssl_radius_topLeft" />
         <attr name="ssl_radius_topRight" />

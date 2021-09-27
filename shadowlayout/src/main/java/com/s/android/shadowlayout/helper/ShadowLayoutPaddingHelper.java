@@ -62,7 +62,7 @@ class ShadowLayoutPaddingHelper extends ShadowLayoutHelper implements ILayout {
         // 阴影
         canvas.drawPath(shadowPath, shadowPaint);
         // 背景
-        drawBackground(canvas);
+        drawBackground(canvas, owner);
     }
 
     /**
@@ -78,10 +78,10 @@ class ShadowLayoutPaddingHelper extends ShadowLayoutHelper implements ILayout {
             right = isShowDirection(FLAG_SHOWDIRECTION_RIGHT) ? mShadowElevation : 0;
             bottom = isShowDirection(FLAG_SHOWDIRECTION_BOTTOM) ? mShadowElevation : 0;
         }
-        shadowRect.left = backgroundRect.left = left;
-        shadowRect.top = backgroundRect.top = top;
-        shadowRect.right = backgroundRect.right = owner.getWidth() - right;
-        shadowRect.bottom = backgroundRect.bottom = owner.getHeight() - bottom;
+        shadowRect.left = left;
+        shadowRect.top = top;
+        shadowRect.right = owner.getWidth() - right;
+        shadowRect.bottom = owner.getHeight() - bottom;
     }
 
     /**
@@ -98,8 +98,14 @@ class ShadowLayoutPaddingHelper extends ShadowLayoutHelper implements ILayout {
     /**
      * 绘制背景
      */
-    private void drawBackground(Canvas canvas) {
+    private void drawBackground(Canvas canvas, View owner) {
         if (mShadowBackground != null) {
+            backgroundRect.left = owner.getPaddingLeft();
+            backgroundRect.top = owner.getPaddingTop();
+            backgroundRect.right = owner.getWidth() - owner.getPaddingRight();
+            backgroundRect.bottom = owner.getHeight() - owner.getPaddingBottom();
+            shadowRect.set(backgroundRect);
+            settingPath();
             int count = canvas.save();
             canvas.clipPath(shadowPath);
             mShadowBackground.setBounds(backgroundRect);

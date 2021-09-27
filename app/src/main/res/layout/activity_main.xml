@@ -6,29 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.s.android.shadowlayout.SShadowScrollView
+    <com.s.android.shadowlayout.SShadowFrameLayout
         android:id="@+id/shadowLinearLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="32dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:ssl_radius="10dp"
-        app:ssl_radius_bottomLeft="30dp"
-        app:ssl_radius_topRight="30dp"
-        app:ssl_shadowAlpha="0.5"
-        app:ssl_shadowColor="#F19EC2"
-        app:ssl_shadowElevation="5dp"
-        app:ssl_shadowType="padding">
+        app:ssl_shadowElevation="5dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Hello World!" />
+            android:text="Hello World!"
+            android:textColor="#000000" />
 
-    </com.s.android.shadowlayout.SShadowScrollView>
+    </com.s.android.shadowlayout.SShadowFrameLayout>
 
     <TextView
         android:layout_width="wrap_content"

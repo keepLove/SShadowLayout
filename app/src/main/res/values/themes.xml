@@ -12,12 +12,16 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="ssl_background">#FF0</item>
         <item name="sshadowLayoutStyle">@style/SShadowDefaultStyle</item>
     </style>
 
     <style name="SShadowDefaultStyle">
-        <item name="ssl_background">#F00</item>
-        <item name="android:padding">40dp</item>
+        <item name="ssl_background">#FFF</item>
+        <item name="ssl_shadowElevation">5dp</item>
+        <item name="ssl_shadowType">padding</item>
+        <item name="ssl_shadowColor">#F00</item>
+        <item name="ssl_shadowAlpha">1</item>
+        <item name="ssl_radius">10dp</item>
+        <item name="android:padding">5dp</item>
     </style>
 </resources>
