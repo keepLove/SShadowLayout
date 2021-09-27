@@ -21,7 +21,7 @@ public class SShadowNestedScrollView extends NestedScrollView implements ILayout
     }
 
     public SShadowNestedScrollView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.sshadowLayoutStyle);
     }
 
     public SShadowNestedScrollView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {

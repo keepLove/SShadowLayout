@@ -22,7 +22,7 @@ public class SShadowLinearLayout extends LinearLayout implements ILayout {
     }
 
     public SShadowLinearLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.sshadowLayoutStyle);
     }
 
     public SShadowLinearLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {

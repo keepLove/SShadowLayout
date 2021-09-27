@@ -22,7 +22,7 @@ public class SShadowConstraintLayout extends ConstraintLayout implements ILayout
     }
 
     public SShadowConstraintLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.sshadowLayoutStyle);
     }
 
     public SShadowConstraintLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {

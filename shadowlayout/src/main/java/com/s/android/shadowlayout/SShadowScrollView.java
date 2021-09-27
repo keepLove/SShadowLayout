@@ -22,7 +22,7 @@ public class SShadowScrollView extends ScrollView implements ILayout {
     }
 
     public SShadowScrollView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.sshadowLayoutStyle);
     }
 
     public SShadowScrollView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {

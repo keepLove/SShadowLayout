@@ -11,11 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:layout_marginTop="32dp"
-        android:padding="12dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:ssl_background="#FFF"
         app:ssl_radius="10dp"
         app:ssl_radius_bottomLeft="30dp"
         app:ssl_radius_topRight="30dp"
@@ -31,5 +29,14 @@
             android:text="Hello World!" />
 
     </com.s.android.shadowlayout.SShadowScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/app_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shadowLinearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
