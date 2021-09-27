@@ -4,17 +4,17 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.keepLove'
-version = "1.2"
+group = shadowlayout.groupId
+version = shadowlayout.versionName
 
 android {
-    compileSdk 30
+    compileSdk shadowlayout.compileSdk
 
     defaultConfig {
-        minSdk 16
-        targetSdk 30
-        versionCode 3
-        versionName version
+        minSdk shadowlayout.minSdk
+        targetSdk shadowlayout.targetSdk
+        versionCode shadowlayout.versionCode
+        versionName shadowlayout.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -53,9 +53,9 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github.keepLove'
-                artifactId = 'SShadowLayout'
-                version = '1.2'
+                groupId = shadowlayout.groupId
+                artifactId = shadowlayout.artifactId
+                version = shadowlayout.versionName
             }
         }
     }
