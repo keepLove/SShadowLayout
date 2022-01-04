@@ -6,10 +6,10 @@ buildscript {
         shadowlayout = [
                 groupId    : 'com.github.keepLove',
                 artifactId : 'SShadowLayout',
-                versionCode: 5,
-                versionName: "1.4",
+                versionCode: 6,
+                versionName: "1.5",
 
-                minSdk     : 16,
+                minSdk     : 18,
                 targetSdk  : 30,
                 compileSdk : 30,
         ]

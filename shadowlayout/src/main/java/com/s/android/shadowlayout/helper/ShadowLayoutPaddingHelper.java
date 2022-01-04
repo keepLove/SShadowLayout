@@ -28,7 +28,6 @@ class ShadowLayoutPaddingHelper extends ShadowLayoutHelper implements ILayout {
 
     ShadowLayoutPaddingHelper(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
         super(context, attrs, defStyleAttr, defStyleRes, owner);
-        owner.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         owner.setWillNotDraw(false);
 
         shadowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
